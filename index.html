@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman To Number Converter</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Quattrocento:wght@700&display=swap");
+
+        * {
+            font-family: "Quattrocento", serif;
+            font-size: large;
+            border-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: linear-gradient(315deg, #9cdaf8 0%, #98fcbd 74%);
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            align-content: center;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .input {
+            min-width: 50%;
+            width: 30%;
+            height: 30px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 5px;
+            text-align: center;
+            min-width: 350px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+                rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        textarea {
+            width: 30%;
+            height: 30px;
+            padding: 5px;
+            text-align: center;
+            min-width: 350px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+                rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .btn {
+            width: 10%;
+            min-width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
+            background-color: deepskyblue;
+            border-radius: 5px;
+            color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <input class="input" type="text" placeholder="Enter a Roman Numeral">
+        <button class="btn" onclick="convert()">Convert</button>
+        <textarea readonly></textarea>
+    </div>
+</body>
+
+<script>
+    function convert() {
+        regXp = /[^IVXLCDM]/;
+        let s = document.querySelector(".input").value.toUpperCase();
+        if (regXp.test(s)) {
+            document.querySelector("textarea").value = "Sorry. The given value can't be converted!";
+        }
+
+        else {
+            let value = 0;
+            const mapping = {
+                I: 1,
+                V: 5,
+                X: 10,
+                L: 50,
+                C: 100,
+                D: 500,
+                M: 1000,
+            };
+
+            for (let i = 0; i < s.length; i++) {
+                if (i <= s.length && mapping[s[i + 1]] > mapping[s[i]])
+                    value = value - mapping[s[i]];
+                else {
+                    value = value + mapping[s[i]];
+                }
+            }
+
+            if (typeof (value) == 'number') { document.querySelector("textarea").value = value; }
+
+        }
+    }
+</script>
+
+</html>
