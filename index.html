@@ -97,6 +97,7 @@
         let s = document.querySelector(".input").value.toUpperCase();
         if (regXp.test(s)) {
             document.querySelector("textarea").value = "Sorry. The given value can't be converted!";
+            document.querySelector("textarea").style.color = 'red';
         }
 
         else {
