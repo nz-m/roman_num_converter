@@ -1,4 +1,4 @@
-Roman numeral converter using HTML, CSS and Javascript [**Demo**](https://nz-m.github.io/roman_num_converter/)
+[**Roman numeral converter using HTML, CSS and Javascript**](https://nz-m.github.io/roman_num_converter/)
 
 
 
